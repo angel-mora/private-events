@@ -61,5 +61,14 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+group :development, :test do
+  # The RSpec testing framework
+  gem 'rspec-rails'
+
+  # The following gems aids with the nuts and bolts
+  # of interacting with the browser.
+  gem 'webdrivers'
+end
+
 gem 'rubocop', '~>0.81.0'
 gem 'hirb', '~> 0.7.3'
