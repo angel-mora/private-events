@@ -1,5 +1,6 @@
 # README
 
+Check out the [project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations) in Odin Project
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
