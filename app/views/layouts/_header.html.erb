@@ -1,0 +1,14 @@
+ <nav>
+  <div class="container-fluid">
+    <%#= link_to "", root_path, class: "mx-2" %>
+    <% if logged_in? %>
+      <ul class="nav navbar-right ">
+        <li><%= link_to "Log out", logout_path, class: "mx-2", method: :delete %></li>
+      </ul>
+    <% else %>
+      <ul class="nav navbar-right ">
+        <li><%= link_to "Log in", login_path, class: "mx-2" %></li>
+      </ul>
+    <% end %>
+  </div>
+ </nav>
