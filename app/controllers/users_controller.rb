@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
     if @user.save
       log_in @user
+      flash[:success] = "Welcome to our events!"
       redirect_to @user
     else
       render 'new'
@@ -22,6 +23,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 end
