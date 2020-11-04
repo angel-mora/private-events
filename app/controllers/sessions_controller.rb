@@ -1,10 +1,6 @@
 class SessionsController < ApplicationController
-  def index
-    render 'index'
-  end
 
   def new
-    @session = current_user.session.new
   end
 
   def show
@@ -17,12 +13,13 @@ class SessionsController < ApplicationController
       log_in user
       redirect_back_or user
     else
+      flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
     end
   end
 
   def destroy
     log_out
-    redirect_to 'index'
+    redirect_to root_url
   end
 end    
