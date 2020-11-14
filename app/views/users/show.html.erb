@@ -1,4 +1,21 @@
-<p>
-  <strong>Username:</strong></br>
-  <%= @user.username %>
-</p>
+
+<div>
+  <h2>My events</h2>
+  <p>Here you can find all the events you have created.</p>
+  <% @current_user.events.all.each do |event| %>
+    <div class="jumbotron" style="">
+      <h5 class="display-4"><%= event.title %></h5>
+      <h6 class="text-muted"><%= current_user.username %></h6>
+      <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  <% end %>
+
+  <h2>Events from others</h2>
+  <p>Here you can find a list of events you were invited to.</p>
+
+  <h3>Upcoming Events</h3>
+  <p>Don't miss your incoming events!</p>
+
+  <h3>Past Events</h3>
+  <p>A recap on all those good meetings you have had.</p>
+</div>
