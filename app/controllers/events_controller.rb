@@ -4,21 +4,23 @@ class EventsController < ApplicationController
   def home
   end
 
-  def new
-    @event = current_user.events.new
-  end
-
   def index
     @events = Event.all
   end
 
+  def new
+    @event = Event.new
+  end
+
   def create
-    @event = current_user.events.build(event_params)
+    @event = Event.create(event_params)
+    # current_user.events.build(event_params)
+      
     if @event.save
       flash[:success] = "Congrats on your new event"
       redirect_to @event
     else
-      render 'new'
+      redirect_to root_path
     end
   end
 
@@ -54,6 +56,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :event_time)
+    params.require(:event).permit(:title, :description, :event_time, :creator_id)
   end
 end
