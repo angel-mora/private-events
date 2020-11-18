@@ -1,6 +1,8 @@
 # TO-DO
 
-- Relate both models
+- Review Pry debugging to understand if @event = current_user is working
+- Review Helpers
+
 
 # Doubts
 

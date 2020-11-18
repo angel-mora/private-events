@@ -2,7 +2,7 @@
 <div>
   <h2>My events</h2>
   <p>Here you can find all the events you have created.</p>
-  <% @current_user.events.all.each do |event| %>
+  <% Event.where(creator_id: current_user.id).each do |event| %>
     <div class="jumbotron" style="">
       <h5 class="display-4"><%= event.title %></h5>
       <h6 class="text-muted"><%= current_user.username %></h6>
