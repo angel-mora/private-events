@@ -2,7 +2,7 @@
 
 - Review Pry debugging to understand if @event = current_user is working
 - Review Helpers
-
+- Modify an Event show page to make possible to attend
 
 # Doubts
 

@@ -5,3 +5,7 @@
 <h3>
     <%= @event.creator.username %>
 </h3>
+
+@event.attendees.each do |attendee|
+    attendee.username
+end
