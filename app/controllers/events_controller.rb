@@ -3,6 +3,8 @@ class EventsController < ApplicationController
   
   def index
     @events = Event.all
+    @upcoming = Event.to_come
+    @past = Event.before_today
   end
 
   def new
@@ -48,6 +50,11 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @attendees = @event.attendees
+  end
+
+  def attend_event
+
   end
 
   private

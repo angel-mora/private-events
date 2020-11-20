@@ -5,4 +5,7 @@ class Event < ApplicationRecord
 
   has_many :attendees, through: :invitations, source: :user
 
+  scope :before_today, -> { where 'event_time < ?', Date.today }
+  scope :to_come, -> { where 'event_time >= ?', Date.today }
+
 end

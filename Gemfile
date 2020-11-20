@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-## Add Faker gem to seed db with testing info
+# Add Faker gem to seed db with testing info
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 
