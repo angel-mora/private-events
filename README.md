@@ -7,3 +7,8 @@
 # Doubts
 
 - Why I was able to use a link direction that didn't include routes paths?
+
+# Useful
+
+- Faker gem
+- Rails pry, requires Appraisal
