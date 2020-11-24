@@ -63,3 +63,11 @@ class EventsController < ApplicationController
     params.require(:event).permit(:title, :description, :event_time, :creator_id)
   end
 end
+
+#########################
+
+# events_controller
+
+
+
+# application helper
