@@ -10,21 +10,30 @@
           <h6 class="text-muted"><%= current_user.username %></h6>
           <p class=""><%= event.description %></p>
           <div class='d-flex justify-content-between'>
-            <%= link_to  "Attend" %>
-            <%= link_to  "Show" %>
+            <%= link_to  "Attend" %> <!-- add invitation controller -->
+            <%= link_to  "Show", event %>
           </div>
-        
-      </div>
+        </div>
     <% end %>
   </div>
 
   <h2>Events from others</h2>
   <p>Here you can find a list of events you were invited to.</p>
 
-  <% User.find(current_user.id).attended_events.each do |event| %>
-    <%= debug current_user %>
-    <%= event.title %></br>
+  <div class='d-flex'>
+  <% current_user.attended_events.each do |event| %>
+    <div class="jumbotron col-4 m-2" style="">
+      <h5 class="display-4"><%= link_to event.title, event %></h5>
+      <h6 class="text-muted"><%= event.creator.username %></h6>
+
+      <p class=""><%= event.description %></p>
+      <div class='d-flex justify-content-between'>
+        <%= link_to  "Attend" %> <!-- add invitation controller -->
+        <%= link_to  "Show", event %>
+      </div>
+    </div>
   <% end %>
+  </div>
 
   <h3>Upcoming Events</h3>
   <p>Don't miss your incoming events!</p>
