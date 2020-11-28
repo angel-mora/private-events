@@ -21,11 +21,10 @@
   <h2>Events from others</h2>
   <p>Here you can find a list of events you were invited to.</p>
 
-  Event.where(current_user is_attending).each.do |event|
-    event.title
-    event.creator.username
-    event.attendees.all
-  end  
+  <% User.find(current_user.id).attended_events.each do |event| %>
+    <%= debug current_user %>
+    <%= event.title %></br>
+  <% end %>
 
   <h3>Upcoming Events</h3>
   <p>Don't miss your incoming events!</p>

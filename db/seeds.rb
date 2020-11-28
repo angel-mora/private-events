@@ -59,3 +59,15 @@ event_list = [
 event_list.each do |title, event_time, description, creator_id|
     Event.create(title: title, event_time: event_time, description: description, creator_id: creator_id)
 end
+
+invitation_list = [
+    [user_id:1, event_id:2],
+    [user_id:3, event_id:2],
+    [user_id:4, event_id:2],
+    [user_id:9, event_id:1],
+    [user_id:10, event_id:1]
+]
+
+invitation_list.each do |user_id, event_id|
+  Invitation.create(user_id: user_id, event_id: event_id)
+end

@@ -6,6 +6,6 @@
     <%= @event.creator.username %>
 </h3>
 
-@event.attendees.each do |attendee|
-    attendee.username
-end
+<% @event.attendees.each do |attendee| %>
+  <%=  attendee.username if attendee.username != nil %></br>
+<% end %>
