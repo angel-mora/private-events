@@ -14,6 +14,6 @@
 
 <% @events.all.each do |event| %>
     <%= link_to event.title, event %></br>
-    event.creator</br>
-    attend_event if !attend_event</br>
+    <%= event.creator.username %></br>
+    <%= link_to 'Join', {controller: 'events', action: 'attend_event', id: event.id}, method: :post %></br>
 <% end %>

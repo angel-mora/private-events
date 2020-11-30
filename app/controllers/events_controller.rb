@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
+  include SessionsHelper
+  include UsersHelper
   before_action :logged_in_user
-  
+
   def index
     @events = Event.all
     @upcoming = Event.to_come
@@ -53,8 +55,18 @@ class EventsController < ApplicationController
     @attendees = @event.attendees
   end
 
+  def already_attendee?
+    @attendees.include?(current_user)
+  end
   def attend_event
-
+    if !already_attendee?
+      @event.attendees << current_user
+      redirect_back fallback_location: :back
+      flash[:notice] = 'You are attending this event!'
+    else
+      redirect_back fallback_location: :back
+      flash[:notice] = 'Looks like you are already subscribed.'
+    end
   end
 
   private
@@ -63,11 +75,3 @@ class EventsController < ApplicationController
     params.require(:event).permit(:title, :description, :event_time, :creator_id)
   end
 end
-
-#########################
-
-# events_controller
-
-
-
-# application helper
