@@ -14,11 +14,10 @@ class EventsController < ApplicationController
   end
 
   def create
-
     @event = Event.where(creator_id: current_user.id).build(event_params)
-      
+
     if @event.save
-      flash[:success] = "Congrats on your new event"
+      flash[:success] = 'Congrats on your new event'
       redirect_to @event
     else
       redirect_to root_path
@@ -32,7 +31,7 @@ class EventsController < ApplicationController
   def update
     @events = current_user.events.find(params[:id])
     if @event.update_attributes(event_params)
-      flash[:success] = "Event successfully updated"
+      flash[:success] = 'Event successfully updated'
       redirect_to @event
     else
       render 'edit'

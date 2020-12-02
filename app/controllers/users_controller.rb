@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to our events!"
+      flash[:success] = 'Welcome to our events!'
       redirect_to @user
     else
       render 'new'
@@ -20,8 +20,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @events = Event.where(creator_id: current_user.id) # @user.events
     @attended_events = Event.where(attendee_id: current_user.id) # @user.attended_events
-    @to_come = Event.where(creator_id:current_user.id).to_come  #@user.events.to_come
-    @before_today = Event.where(creator_id:current_user.id).before_today
+    @to_come = Event.where(creator_id: current_user.id).to_come # @user.events.to_come
+    @before_today = Event.where(creator_id: current_user.id).before_today
     @upcoming = Event.to_come
     @past = Event.before_today
   end
