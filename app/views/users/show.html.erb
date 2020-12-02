@@ -1,73 +1,80 @@
 
-<div>
+<div class=''>
   <h2 class='text-center'>My events</h2>
   <p class=''>Here you can find all the events you have created.</p>
-  <div class='d-flex'>
+  <div class='container'>
+    <div class="row justify-content-center">
     <% Event.where(creator_id: current_user.id).each do |event| %>
       
-        <div class="jumbotron col-4 m-2" style="">
-          <h5 class="display-4"><%= event.title %></h5>
+        <div class="card col-3 m-2 p-4" style="">
+          <h5 class=""><%= event.title %></h5>
           <h6 class="text-muted"><%= current_user.username %></h6>
           <p class=""><%= event.description %></p>
           <div class='d-flex justify-content-between'>
-            <%= link_to  "Attend" %> <!-- add invitation controller -->
+            <%= link_to  "Attend",  {controller: 'events', action: 'attend_event', id: event.id}, method: :post %>
             <%= link_to  "Show", event %>
           </div>
         </div>
     <% end %>
+    </div>
   </div>
 
   <h2>Events from others</h2>
   <p>Here you can find a list of events you were invited to.</p>
 
-  <div class='d-flex'>
-  <% current_user.attended_events.each do |event| %>
-    <div class="jumbotron col-4 m-2" style="">
-      <h5 class="display-4"><%= link_to event.title, event %></h5>
-      <h6 class="text-muted"><%= event.creator.username %></h6>
+  <div class='container'>
+    <div class="row justify-content-center">
+    <% current_user.attended_events.each do |event| %>
+      <div class="card col-3 m-2 p-4" style="">
+        <h5 class=""><%= link_to event.title, event %></h5>
+        <h6 class="text-muted"><%= event.creator.username %></h6>
 
-      <p class=""><%= event.description %></p>
-      <div class='d-flex justify-content-between'>
-        <%= link_to  "Attend" %> <!-- add invitation controller -->
-        <%= link_to  "Show", event %>
+        <p class=""><%= event.description %></p>
+        <div class='d-flex justify-content-between'>
+          <%= link_to  "Attend",  {controller: 'events', action: 'attend_event', id: event.id}, method: :post %>
+          <%= link_to  "Show", event %>
+        </div>
       </div>
+    <% end %>
     </div>
-  <% end %>
   </div>
 
   <h3>Upcoming Events</h3>
   <p>Don't miss your incoming events!</p>
-  <div class='d-flex'>
-    <% @upcoming.each do |event| %>
-      
-        <div class="jumbotron col-4 m-2" style="">
-          <h5 class="display-4"><%= event.title %></h5>
-          <h6 class="text-muted"><%= current_user.username %></h6>
-          <p class=""><%= event.description %></p>
-          <div class='d-flex justify-content-between'>
-            <%= link_to  "Attend" %>
-            <%= link_to  "Show" %>
-          </div>
+  <div class='container'>
+    <div class="row justify-content-center">
+      <% @upcoming.each do |event| %>
         
-      </div>
-    <% end %>
+          <div class="card col-3 m-2 p-4" style="">
+            <h5 class=""><%= event.title %></h5>
+            <h6 class="text-muted"><%= current_user.username %></h6>
+            <p class=""><%= event.description %></p>
+            <div class='d-flex justify-content-between'>
+              <%= link_to  "Attend",  {controller: 'events', action: 'attend_event', id: event.id}, method: :post %>
+              <%= link_to  "Show" %>
+            </div>
+          
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <h3>Past Events</h3>
   <p>A recap on all those good meetings you have had.</p>
-  <div class='d-flex'>
-    <% Event.where(creator_id: current_user.id).each do |event| %>
-      
-        <div class="jumbotron col-4 m-2" style="">
-          <h5 class="display-4"><%= event.title %></h5>
-          <h6 class="text-muted"><%= current_user.username %></h6>
-          <p class=""><%= event.description %></p>
-          <div class='d-flex justify-content-between'>
-            <%= link_to  "Attend" %>
-            <%= link_to  "Show" %>
-          </div>
+  <div class='container'>
+    <div class="row justify-content-center">
+      <% Event.where(creator_id: current_user.id).each do |event| %>
         
+          <div class="card col-3 m-2 p-4" style="">
+            <h5 class=""><%= event.title %></h5>
+            <h6 class="text-muted"><%= current_user.username %></h6>
+            <p class=""><%= event.description %></p>
+            <div class='d-flex justify-content-between'>
+              <%= link_to  "Attend",  {controller: 'events', action: 'attend_event', id: event.id}, method: :post %>
+              <%= link_to  "Show" %>
+            </div>
+        </div>
+      <% end %>
       </div>
-    <% end %>
   </div>
 </div>

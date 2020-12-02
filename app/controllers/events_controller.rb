@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
-  include SessionsHelper
   include UsersHelper
   before_action :logged_in_user
+  before_action :set_event, only: %i[show attend_event]
 
   def index
     @events = Event.all
@@ -51,13 +51,14 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
     @attendees = @event.attendees
   end
 
   def already_attendee?
-    @attendees.include?(current_user)
+    attendees = @event.attendees
+    attendees.include?(current_user)
   end
+
   def attend_event
     if !already_attendee?
       @event.attendees << current_user
@@ -71,7 +72,11 @@ class EventsController < ApplicationController
 
   private
 
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
   def event_params
-    params.require(:event).permit(:title, :description, :event_time, :creator_id)
+    params.require(:event).permit(:title, :description, :event_time, :creator_id, :id)
   end
 end

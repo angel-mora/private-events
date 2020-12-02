@@ -12,8 +12,18 @@
 
 <h1>All Events!</h1>
 
-<% @events.all.each do |event| %>
-    <%= link_to event.title, event %></br>
-    <%= event.creator.username %></br>
-    <%= link_to 'Join', {controller: 'events', action: 'attend_event', id: event.id}, method: :post %></br>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <% @events.all.each do |event| %>
+      <div class="card col-3 m-2 p-4">
+        <h5 class=''><%= link_to event.title, event %></h5>
+        <h6 class="text-muted"><%= event.creator.username %></h6>
+                <p class=""><%= event.description %></p>
+        <div class="d-flex justify-content-between">
+          <%= link_to 'Join', {controller: 'events', action: 'attend_event', id: event.id}, method: :post %>
+          <%= link_to 'Show', event %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
