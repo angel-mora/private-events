@@ -51,6 +51,7 @@ class EventsController < ApplicationController
 
   def show
     @attendees = @event.attendees
+    #current_user = User.find_by(id: params[:session][:id])
   end
 
   def already_attendee?
