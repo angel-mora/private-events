@@ -14,7 +14,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.where(creator_id: current_user.id).build(event_params)
+    @event = current_user.build(event_params)
 
     if @event.save
       flash[:success] = 'Congrats on your new event'
