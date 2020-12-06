@@ -18,12 +18,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @events = Event.where(creator_id: current_user.id) # @user.events
+    @events = current_user.created_events # @user.events
     @attended_events = Event.where(attendee_id: current_user.id) # @user.attended_events
-    @to_come = Event.where(creator_id: current_user.id).to_come # @user.events.to_come
-    @before_today = Event.where(creator_id: current_user.id).before_today
+    @to_come = current_user.created_events.to_come # @user.events.to_come
+    @before_today = current_user.created_events.before_today
     @upcoming = Event.to_come
     @past = Event.before_today
+    @current_user = current_user
   end
 
   private

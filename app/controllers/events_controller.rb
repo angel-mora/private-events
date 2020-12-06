@@ -14,7 +14,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.build(event_params)
+    @event = current_user.created_events.build(event_params)
 
     if @event.save
       flash[:success] = 'Congrats on your new event'
@@ -51,7 +51,6 @@ class EventsController < ApplicationController
 
   def show
     @attendees = @event.attendees
-    #current_user = User.find_by(id: params[:session][:id])
   end
 
   def already_attendee?
