@@ -18,11 +18,12 @@ RSpec.describe Event, type: :feature do
       click_button 'Log in'
     end
   end
+
   scenario 'valid inputs' do
     visit new_event_path
-    # fill_in 'event_title', with: 'Testing Title'
-    # click_on 'Submit your event'
-    # visit events_path
+    fill_in 'event_title', with: 'Testing Title'
+    click_on 'Submit your event'
+    visit events_path
     expect(page).to have_content('Event Title')
   end
 end
