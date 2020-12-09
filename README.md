@@ -1,21 +1,100 @@
+# Private Events
+
+> A nice app to organize meetings! Inspired on [EventBrite](https://www.eventbrite.com/).
+
+![screenshot](./app/assets/images/private-events.png)
+
+Additional description about the project and its features.
+
+## Built With
+
+- Ruby 2.7.0 on Rails 5.2.4
+- CSS Bootstrap
+
+## Live Demo
+
+[Live Demo Link]()
+
+## Getting Started
+
+**This is an example of how you may give instructions on setting up your project locally.**
+**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
+
+
+To get a local copy up and running follow these simple tutorial:
+
+### Steps to run
+
+```console
+git clone https://github.com/angel-mora/private-events.git
+```
+
+Go to the project folder
+
+```console
+cd private-events
+bundle install
+```
+Update local database
+
+```console
+rails db:migrate
+```
+Run it locally
+
+```console
+rails s
+```  
+Then, open your browser and type: http://localhost:3000/
+
+### Testing
+
+Run the test from root directory using:
+
+``` console
+rspec
+or 
+rspec ./spec/path/to/file
+```
+
+## Authors
+
+👤 **Angel Mora**
+
+- Github: [@angel-mora](https://github.com/angel-mora)
+- Twitter: [@angelmoma_](https://twitter.com/angelmoma_)
+- Linkedin: [linkedin]( www.linkedin.com/in/angelmoradev)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Hat tip to anyone whose code was used
+- Inspiration
+- etc
+
+## 📝 License
+
+This project is [MIT](lic.url) licensed.
 
 
 ---
 
-# TO-DO
+# Personal Learnings
 
-- Review Pry debugging to understand if @event = current_user is working
-- Review Helpers
-- Modify an Event show page to make possible to attend
-
-# Doubts
-
-- Why I was able to use a link direction that didn't include routes paths?
+- Pry/Appraisal debugging
+- Helpers
+- Faker gem
 
 # Useful
-
-- Faker gem
-- Rails pry, requires Appraisal
 
 If you can find a model with little dependencies, a good first integration test to write might be a test for updating a record.
 Common integration tests:
