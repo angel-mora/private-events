@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   subject { User.new(username: 'Luis Miguel', email: 'luis@mi.com', password: 'admin123') }
   it { should validate_presence_of(:username) }
   it { should validate_uniqueness_of(:username) }
-  it { should validate_uniqueness_of(:email) }
+  it { should validate_uniqueness_of(:email).ignoring_case_sensitivity }
   it { should validate_presence_of(:email) }
   it { should have_many(:created_events) }
   it { should have_many(:attended_events) }
@@ -24,8 +24,8 @@ RSpec.describe User, type: :model do
   end
 
   it 'is not valid if the username is not unique' do
-    # other_already_exists = User.create(username: 'Luis Miguel', email: 'something@gmail.com', password: 'admin123')
-    expect(subject).to_not be_valid # if other_already_exists
+    other_already_exists = User.create(username: 'Luis Miguel', email: 'something@gmail.com', password: 'admin123')
+    expect(subject).to_not be_valid if other_already_exists
   end
 
   it 'is not valid if the email is not unique' do

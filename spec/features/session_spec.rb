@@ -15,5 +15,4 @@ RSpec.describe Event, type: :feature do
     fill_in 'session_password', with: :password
     click_button 'Log in'
   end
-
 end
