@@ -40,6 +40,12 @@ Update local database
 ```console
 rails db:migrate
 ```
+Seed database with test data
+
+```console
+rails db:seed
+```
+
 Run it locally
 
 ```console
@@ -63,7 +69,7 @@ rspec ./spec/path/to/file
 
 - Github: [@angel-mora](https://github.com/angel-mora)
 - Twitter: [@angelmoma_](https://twitter.com/angelmoma_)
-- Linkedin: [linkedin]( www.linkedin.com/in/angelmoradev)
+- Linkedin: [AngelMoraDev]( www.linkedin.com/in/angelmoradev)
 
 ## 🤝 Contributing
 
