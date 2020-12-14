@@ -1,0 +1,70 @@
+<div class="text-center home">
+  <h1>Private Events</h1><br/>
+
+  <h2>Made for event creators</h2><br/>
+  <p>From music festivals and conventions to pop-up dinners and photography classes, transform your vision into an experience people will love.</p>
+
+  <%= link_to new_event_path do%>
+    <button class='btn btn-success'>Create a new event</button>
+  <% end %>
+
+</div>
+
+<h1>All Events!</h1>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <% @events.all.each do |event| %>
+      <div class="card col-3 m-2 p-4">
+        <h5 class=''><%= link_to event.title, event %></h5>
+        <h6 class="text-muted"><%= event.creator.username %></h6>
+                <p class=""><%= event.description %></p>
+        <div class="d-flex justify-content-between">
+          <%= link_to 'Join', {controller: 'events', action: 'attend_event', id: event.id}, method: :post %>
+          <%= link_to 'Show', event %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+  <h3>Upcoming Events</h3>
+  <p>Don't miss your incoming events!</p>
+  <div class='container'>
+    <div class="row justify-content-center">
+      <% @upcoming.each do |event| %>
+        
+          <div class="card col-3 m-2 p-4" style="">
+            <h5 class=""><%= event.title %></h5>
+            <h6 class="text-muted"><%= current_user.username %></h6>
+            <p class=""><%= event.description %></p>
+            <div class='d-flex justify-content-between'>
+              <%= link_to  "Attend",  {controller: 'events', action: 'attend_event', id: event.id}, method: :post %>
+              <%= link_to  "Show", event %>
+            </div>
+          
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <h3>Past Events</h3>
+  <p>A recap on all those good meetings you have had.</p>
+  <div class='container'>
+    <div class="row justify-content-center">
+      <% @current_user.created_events.each do |event| %>
+        
+          <div class="card col-3 m-2 p-4" style="">
+            <h5 class=""><%= event.title %></h5>
+            <h6 class="text-muted"><%= current_user.username %></h6>
+            <p class=""><%= event.description %></p>
+            <div class='d-flex justify-content-between'>
+              <%= link_to  "Attend",  {controller: 'events', action: 'attend_event', id: event.id}, method: :post %>
+              <%= link_to  "Show", event %>
+            </div>
+        </div>
+      <% end %>
+      </div>
+  </div>
+  
+</div>

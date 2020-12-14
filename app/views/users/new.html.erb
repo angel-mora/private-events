@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-4 offset-4">
+    <%= form_with(model: @user, local: true) do |form| %>
+        <%= render 'shared/error_messages' %>
+
+        <%= form.label :Username %>
+        <%= form.text_field :username, class: 'mb-1 form-control' %>
+
+        <%= form.label :email %>
+        <%= form.email_field :email, class: 'mb-1 form-control'%>
+
+        <%= form.label :password %>
+        <%= form.password_field :password, class: 'mb-1 form-control'%>
+
+        <%= form.label :password_confirmation, "Confirm your password" %>
+        <%= form.password_field :password_confirmation , class: 'mb-1 form-control'%>
+
+        <%= form.submit "Create your user", class: "mt-4 btn btn-primary"%>
+    <% end %>
+  </div>
+</div>

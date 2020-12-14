@@ -1,0 +1,42 @@
+
+<div class=''>
+  <h2 class='text-center'>My events</h2>
+  <p class=''>Here you can find all the events you have created.</p>
+  <div class='container'>
+    <div class="row justify-content-center">
+    <% @current_user.created_events.each do |event| %>
+      
+        <div class="card col-3 m-2 p-4" style="">
+          <h5 class=""><%= event.title %></h5>
+          <h6 class="text-muted"><%= current_user.username %></h6>
+          <p class=""><%= event.description %></p>
+          <div class='d-flex justify-content-between'>
+            <%= link_to  "Attend",  {controller: 'events', action: 'attend_event', id: event.id}, method: :post %>
+            <%= link_to  "Show", event %>
+          </div>
+        </div>
+    <% end %>
+    </div>
+  </div>
+
+  <h2>Events from others</h2>
+  <p>Here you can find a list of events you were invited to.</p>
+
+  <div class='container'>
+    <div class="row justify-content-center">
+    <% @current_user.attended_events.each do |event| %>
+      <div class="card col-3 m-2 p-4" style="">
+        <h5 class=""><%= link_to event.title, event %></h5>
+        <h6 class="text-muted"><%= event.creator.username %></h6>
+
+        <p class=""><%= event.description %></p>
+        <div class='d-flex justify-content-between'>
+          <%= link_to  "Attend",  {controller: 'events', action: 'attend_event', id: event.id}, method: :post %>
+          <%= link_to  "Show", event %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+
+</div>

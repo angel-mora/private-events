@@ -1,0 +1,11 @@
+<h2>
+    <%= @event.title %></br>
+</h2>
+
+<h3>
+    <%= @event.creator.username %>
+</h3>
+
+<% @event.attendees.each do |attendee| %>
+  <%=  attendee.username if attendee.username != nil %></br>
+<% end %>
